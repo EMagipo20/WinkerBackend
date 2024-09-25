@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -136,6 +137,14 @@ public class PostulanteServiceImplements implements PostulanteService {
     @Override
     public List<Object[]> countPostsPorPostulante() {
         return pR.countPostsPorPostulante();
+    }
+
+    @Override
+    public List<PostulanteDTO> buscarPostulantePorFechaNacimiento(LocalDate fechaNacimiento) {
+        return pR.findByFechaNacimiento(fechaNacimiento)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     private PostulanteDTO convertToDTO(Postulante postulante) {

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -65,6 +66,12 @@ public class PostulanteController {
     @GetMapping("/BuscarPorCorreo/{correo}")
     public ResponseEntity<List<PostulanteDTO>> buscarPorCorreo(@PathVariable("correo") String correo) {
         List<PostulanteDTO> postulantes = pS.buscarPostulantePorCorreo(correo);
+        return ResponseEntity.ok(postulantes);
+    }
+
+    @GetMapping("/BuscarPorFechaNacimiento/{fechaNacimiento}")
+    public ResponseEntity<List<PostulanteDTO>> buscarPorFechaNacimiento(@PathVariable("fechaNacimiento") LocalDate fechaNacimiento){
+        List<PostulanteDTO> postulantes = pS.buscarPostulantePorFechaNacimiento(fechaNacimiento);
         return ResponseEntity.ok(postulantes);
     }
 

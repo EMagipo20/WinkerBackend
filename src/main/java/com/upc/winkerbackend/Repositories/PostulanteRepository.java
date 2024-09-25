@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,4 +29,8 @@ public interface PostulanteRepository extends JpaRepository<Postulante, Long> {
     // CANTIDAD POSTS POR POSTULANTE
     @Query("SELECT p.postulante.id, COUNT(p.id) FROM Post p GROUP BY p.postulante.id")
     List<Object[]> countPostsPorPostulante();
+
+    // BUSCAR A UN POSTULANTE POR SU FECHA DE NACIMIENTO
+    List<Postulante> findByFechaNacimiento(LocalDate fechaNacimiento);
+
 }
