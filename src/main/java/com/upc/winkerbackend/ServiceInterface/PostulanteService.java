@@ -17,6 +17,6 @@ public interface PostulanteService {
     List<PostulanteDTO> postulantesConSolicitudesAceptadas();
     Long findPostulanteIdByUsername(String username);
     List<Object[]> countPostsPorPostulante();
-
+    List<PostulanteDTO> buscarPostulantesPorAnio(Integer anio);
     List<PostulanteDTO> buscarPostulantePorFechaNacimiento(LocalDate fechaNacimiento);
 }

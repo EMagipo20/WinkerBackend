@@ -140,6 +140,14 @@ public class PostulanteServiceImplements implements PostulanteService {
     }
 
     @Override
+    public List<PostulanteDTO> buscarPostulantesPorAnio(Integer anio) {
+        return pR.FindByYear(anio)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<PostulanteDTO> buscarPostulantePorFechaNacimiento(LocalDate fechaNacimiento) {
         return pR.findByFechaNacimiento(fechaNacimiento)
                 .stream()

@@ -33,4 +33,7 @@ public interface PostulanteRepository extends JpaRepository<Postulante, Long> {
     // BUSCAR A UN POSTULANTE POR SU FECHA DE NACIMIENTO
     List<Postulante> findByFechaNacimiento(LocalDate fechaNacimiento);
 
+    // LSITAR POSTULANTES POR AÑO
+    @Query("SELECT p FROM Postulante p WHERE YEAR(p.fechaNacimiento) = :anio")
+    List<Postulante> FindByYear(@Param("anio") Integer anio);
 }

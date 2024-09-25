@@ -75,6 +75,12 @@ public class PostulanteController {
         return ResponseEntity.ok(postulantes);
     }
 
+    @GetMapping("/BuscarPorAnio/{anio}")
+    public ResponseEntity<List<PostulanteDTO>> buscarPorAnio(@PathVariable("anio") Integer anio){
+        List<PostulanteDTO> postulantes = pS.buscarPostulantesPorAnio(anio);
+        return ResponseEntity.ok(postulantes);
+    }
+
     @GetMapping("/SolicitudesAceptadas")
     public ResponseEntity<List<PostulanteDTO>> postulantesConSolicitudesAceptadas() {
         List<PostulanteDTO> postulantes = pS.postulantesConSolicitudesAceptadas();
