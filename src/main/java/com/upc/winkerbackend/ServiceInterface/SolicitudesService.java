@@ -3,6 +3,7 @@ package com.upc.winkerbackend.ServiceInterface;
 import com.upc.winkerbackend.DTO.SolicitudesDTO;
 import com.upc.winkerbackend.Entities.Solicitud;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface SolicitudesService {
@@ -17,4 +18,6 @@ public interface SolicitudesService {
     List<SolicitudesDTO> solicitudesAceptadas();
 
     List<SolicitudesDTO> listarSolicitudesPorEstado(String estado);
+    public List<SolicitudesDTO> listarSolicitudesPorFecha(LocalDate fecha);
+
 }

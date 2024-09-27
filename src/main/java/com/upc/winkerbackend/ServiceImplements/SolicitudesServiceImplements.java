@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -84,6 +85,14 @@ public class SolicitudesServiceImplements implements SolicitudesService {
     @Override
     public List<SolicitudesDTO> listarSolicitudesPorEstado(String estado) {
         return solicitudesRepository.findSolicitudesPorEstado(estado)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SolicitudesDTO> listarSolicitudesPorFecha(LocalDate fecha) {
+        return solicitudesRepository.findSolicitudesPorFecha(fecha)
                 .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

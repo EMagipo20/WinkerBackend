@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -33,4 +34,8 @@ public interface SolicitudesRepository extends JpaRepository<Solicitud, Long> {
     //CONSULTA PARA OBTENER TODOS LOS POSTULANTES POR ESTADO DE LA SOLICITUD
     @Query("SELECT s FROM Solicitud s WHERE s.estadoSolicitud = :estado")
     List<Solicitud> findSolicitudesPorEstado(@Param("estado") String estado);
+
+    // Buscar todas las solicitudes por una fecha de solicitud específica
+    @Query("SELECT s FROM Solicitud s WHERE s.fechaSolicitud = :fecha")
+    List<Solicitud> findSolicitudesPorFecha(@Param("fecha") LocalDate fecha);
 }
