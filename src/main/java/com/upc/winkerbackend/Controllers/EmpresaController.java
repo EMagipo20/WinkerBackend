@@ -23,9 +23,9 @@ public class EmpresaController {
     private ModelMapper modelMapper;
 
     @PostMapping("/Agregar")
-    public ResponseEntity<String> agregar(@RequestBody EmpresaDTO empresaDTO) {
-        eS.insertarEmpresa(empresaDTO);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> agregar(@Valid @RequestBody EmpresaDTO empresaDTO) {
+    eS.insertarEmpresa(empresaDTO);
+    return ResponseEntity.ok("Empresa agregada correctamente");
     }
 
     @PutMapping("/Actualizar")
