@@ -95,8 +95,13 @@ public class EmpresaServiceImplements implements EmpresaService {
 
     @Override
     public void eliminarEmpresa(Long id) {
+        if (!eR.existsById(id)) {
+            throw new RuntimeException("La empresa con ID " + id + " no fue encontrada.");
+        }
         eR.deleteById(id);
+        logger.info("Empresa con ID {} eliminada exitosamente", id);
     }
+
 
     @Override
     public List<EmpresaDTO> listarEmpresas() {
