@@ -92,4 +92,18 @@ public class SolicitudesController {
             return ResponseEntity.badRequest().body(null);
         }
     }
+
+    @GetMapping("/SolicitudesPorEstado")
+    public ResponseEntity<List<SolicitudesDTO>> listarSolicitudesPorEstado(@RequestParam("estado") String estado) {
+        List<SolicitudesDTO> solicitudes = solicitudesService.listarSolicitudesPorEstado(estado);
+        return ResponseEntity.ok(solicitudes);
+    }
+
+    @GetMapping("/SolicitudesPorOfertaEmpleo")
+    public ResponseEntity<List<SolicitudesDTO>> listarSolicitudesPorOfertaEmpleo(
+            @RequestParam("ofertaEmpleoId") Long ofertaEmpleoId) {
+
+        List<SolicitudesDTO> solicitudes = solicitudesService.listarSolicitudesPorOfertaEmpleo(ofertaEmpleoId);
+        return ResponseEntity.ok(solicitudes);
+    }
 }

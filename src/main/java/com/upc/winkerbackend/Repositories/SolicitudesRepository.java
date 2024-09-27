@@ -38,4 +38,7 @@ public interface SolicitudesRepository extends JpaRepository<Solicitud, Long> {
     // Buscar todas las solicitudes por una fecha de solicitud específica
     @Query("SELECT s FROM Solicitud s WHERE s.fechaSolicitud = :fecha")
     List<Solicitud> findSolicitudesPorFecha(@Param("fecha") LocalDate fecha);
+
+    @Query("SELECT s FROM Solicitud s WHERE s.ofertaEmpleo.id = :ofertaEmpleoId")
+    List<Solicitud> findSolicitudesByOfertaEmpleoId(@Param("ofertaEmpleoId") Long ofertaEmpleoId);
 }

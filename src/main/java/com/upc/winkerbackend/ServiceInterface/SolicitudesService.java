@@ -19,5 +19,6 @@ public interface SolicitudesService {
 
     List<SolicitudesDTO> listarSolicitudesPorEstado(String estado);
     public List<SolicitudesDTO> listarSolicitudesPorFecha(LocalDate fecha);
+    List<SolicitudesDTO> listarSolicitudesPorOfertaEmpleo(Long ofertaEmpleoId);
 
 }

@@ -97,5 +97,12 @@ public class SolicitudesServiceImplements implements SolicitudesService {
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
+    @Override
+    public List<SolicitudesDTO> listarSolicitudesPorOfertaEmpleo(Long ofertaEmpleoId) {
+        return solicitudesRepository.findSolicitudesByOfertaEmpleoId(ofertaEmpleoId)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
 
 }
