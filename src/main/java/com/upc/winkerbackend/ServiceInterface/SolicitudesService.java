@@ -15,4 +15,6 @@ public interface SolicitudesService {
     long contarPostulacionesPorPostulante(Long postulanteId);
     List<SolicitudesDTO> solicitudesRecibidasPorOferta(Long ofertaEmpleoId);
     List<SolicitudesDTO> solicitudesAceptadas();
+
+    List<SolicitudesDTO> listarSolicitudesPorEstado(String estado);
 }

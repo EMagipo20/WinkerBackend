@@ -79,4 +79,14 @@ public class SolicitudesServiceImplements implements SolicitudesService {
     private SolicitudesDTO convertToDTO(Solicitud solicitud) {
         return modelMapper.map(solicitud, SolicitudesDTO.class);
     }
+
+
+    @Override
+    public List<SolicitudesDTO> listarSolicitudesPorEstado(String estado) {
+        return solicitudesRepository.findSolicitudesPorEstado(estado)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
 }

@@ -3,6 +3,7 @@ package com.upc.winkerbackend.Repositories;
 import com.upc.winkerbackend.Entities.Solicitud;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,4 +28,9 @@ public interface SolicitudesRepository extends JpaRepository<Solicitud, Long> {
     // FILTRAR TODOS LOS POSTULANTES CUYA SOLICITUD HA SIDO ACEPTADA
     @Query("SELECT s FROM Solicitud s WHERE s.estadoSolicitud = 'Aceptada'")
     List<Solicitud> findSolicitudesAceptadas();
+
+
+    //CONSULTA PARA OBTENER TODOS LOS POSTULANTES POR ESTADO DE LA SOLICITUD
+    @Query("SELECT s FROM Solicitud s WHERE s.estadoSolicitud = :estado")
+    List<Solicitud> findSolicitudesPorEstado(@Param("estado") String estado);
 }
