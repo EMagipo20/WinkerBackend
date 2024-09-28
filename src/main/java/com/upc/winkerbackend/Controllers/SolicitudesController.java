@@ -21,7 +21,7 @@ public class SolicitudesController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @PostMapping("/Agregar")
+    @PostMapping("/AgregarSolicitud")
     public ResponseEntity<String> agregar(@RequestBody SolicitudesDTO solicitudesDTO) {
         Solicitud solicitudes = modelMapper.map(solicitudesDTO, Solicitud.class);
         solicitudesService.insertarSolicitudes(solicitudes);
