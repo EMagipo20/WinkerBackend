@@ -1,7 +1,5 @@
 package com.upc.winkerbackend.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
 import lombok.*;
 

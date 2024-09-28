@@ -88,8 +88,11 @@ public class PostulanteServiceImplements implements PostulanteService {
     }
 
     @Override
-    public List<Postulante> listarTodo() {
-        return pR.findAll();
+    public List<PostulanteDTO> listarTodo() {
+        return pR.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -1,9 +1,7 @@
 package com.upc.winkerbackend.ServiceImplements;
 
-import com.upc.winkerbackend.DTO.PostDTO;
 import com.upc.winkerbackend.DTO.RubroDTO;
 import com.upc.winkerbackend.Entities.Rubro;
-import com.upc.winkerbackend.Repositories.PostRepository;
 import com.upc.winkerbackend.Repositories.RubroRepository;
 import com.upc.winkerbackend.ServiceInterface.RubroService;
 import org.modelmapper.ModelMapper;

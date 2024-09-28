@@ -8,7 +8,7 @@ import java.time.LocalTime;
 public class TipoTrabajoDTO {
     private Long id;
     private String tipo;
-    private String dias;
+    private String dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
 }
