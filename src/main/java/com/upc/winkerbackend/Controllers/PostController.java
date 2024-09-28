@@ -21,14 +21,14 @@ public class PostController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @PostMapping("/AgregarPost")
+    @PostMapping("/Agregar")
     public ResponseEntity<String> agregar(@RequestBody PostDTO postDTO) {
         Post post = modelMapper.map(postDTO, Post.class);
         postService.insertarPost(post);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/ActualizarPost")
+    @PutMapping("/Actualizar")
     public ResponseEntity<String> actualizar(@RequestBody PostDTO postDTO) {
         Post post = modelMapper.map(postDTO, Post.class);
         postService.actualizarPost(post);
@@ -41,12 +41,14 @@ public class PostController {
         return ResponseEntity.ok().build();
     }
 
+    //Metodo para listartodo
     @GetMapping("/ListarTodo")
     public ResponseEntity<List<PostDTO>> listarTodo() {
         List<PostDTO> post = postService.listarPosts();
         return ResponseEntity.ok(post);
     }
 
+    //Metodo para contar por oferta de empleo
     @GetMapping("/count-por-oferta-empleo")
     public ResponseEntity<List<Object[]>> CountPostsPorOfertaEmpleo() {
         List<Object[]> result = postService.countPostsPorOfertaEmpleo();
