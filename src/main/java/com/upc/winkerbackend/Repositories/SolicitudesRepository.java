@@ -7,24 +7,25 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository // Define este repositorio para la entidad Solicitud
 public interface SolicitudesRepository extends JpaRepository<Solicitud, Long> {
-    // LISTAR SOLICITUDES POR POSTULANTE
+
+    // Listar todas las solicitudes realizadas por un postulante en específico
     List<Solicitud> findByPostulanteId(Long postulanteId);
 
-    // CONTAR LA CANTIDAD DE SOLICITUDES ENVIADAS
+    // Contar el número total de solicitudes enviadas
     @Query("SELECT COUNT(s) FROM Solicitud s")
     long countTotalSolicitudes();
 
-    // CONTAR LA CANTIDAD DE POSTULACIONES DE UN POSTULANTE
+    // Contar la cantidad de solicitudes (postulaciones) hechas por un postulante específico
     @Query("SELECT COUNT(s) FROM Solicitud s WHERE s.postulante.id = :postulanteId")
     long countSolicitudesByPostulanteId(Long postulanteId);
 
-    // OBTENER TODAS LAS SOLICITUDES RECIBIDAS SOBRE UNA DETERMINADA OFERTA DE EMPLEO
+    // Obtener todas las solicitudes recibidas para una determinada oferta de empleo
     @Query("SELECT s FROM Solicitud s WHERE s.ofertaEmpleo.id = :ofertaEmpleoId")
     List<Solicitud> findByOfertaEmpleoId(Long ofertaEmpleoId);
 
-    // FILTRAR TODOS LOS POSTULANTES CUYA SOLICITUD HA SIDO ACEPTADA
+    // Filtrar todas las solicitudes que han sido aceptadas
     @Query("SELECT s FROM Solicitud s WHERE s.estadoSolicitud = 'Aceptada'")
     List<Solicitud> findSolicitudesAceptadas();
 }
