@@ -8,7 +8,7 @@ import java.util.List;
 public interface PostulanteService {
     Postulante insertarPostulante(PostulanteDTO postulanteDTO);
     Postulante actualizarPostulante(Postulante postulante);
-    List<Postulante> listarTodo();
+    List<PostulanteDTO> listarTodo();
     void eliminarPostulante(Long id);
     PostulanteDTO obtenerPostulantePorId(Long id);
     List<PostulanteDTO> buscarPostulantePorNombre(String nombreCompleto);

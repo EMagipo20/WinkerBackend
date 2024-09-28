@@ -3,7 +3,6 @@ package com.upc.winkerbackend.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
