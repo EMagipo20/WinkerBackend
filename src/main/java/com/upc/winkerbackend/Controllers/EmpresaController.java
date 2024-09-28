@@ -21,32 +21,32 @@ public class EmpresaController {
 
     @Autowired
     private ModelMapper modelMapper;
-
-    @PostMapping("/Agregar")
+    //Agregar
+    @PostMapping("/AgregarEmpresa")
     public ResponseEntity<String> agregar(@RequestBody EmpresaDTO empresaDTO) {
         eS.insertarEmpresa(empresaDTO);
         return ResponseEntity.ok().build();
     }
-
+    //Actualizar
     @PutMapping("/Actualizar")
     public ResponseEntity<String> actualizar(@RequestBody EmpresaDTO empresaDTO) {
         Empresa empresa = modelMapper.map(empresaDTO, Empresa.class);
         eS.actualizarEmpresa(empresa);
         return ResponseEntity.ok().build();
     }
-
+    //Eliminar
     @DeleteMapping("/Eliminar/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Long id) {
         eS.eliminarEmpresa(id);
         return ResponseEntity.ok().build();
     }
-
+    //Listar
     @GetMapping("/ListarTodo")
     public ResponseEntity<List<EmpresaDTO>> listarTodo() {
         List<EmpresaDTO> empresas = eS.listarEmpresas();
         return ResponseEntity.ok(empresas);
     }
-
+    //ObtenerId
     @GetMapping("/Obtener/{id}")
     public ResponseEntity<EmpresaDTO> obtenerPorId(@PathVariable("id") Long id) {
         EmpresaDTO empresaDTO = eS.obtenerEmpresaPorId(id);
