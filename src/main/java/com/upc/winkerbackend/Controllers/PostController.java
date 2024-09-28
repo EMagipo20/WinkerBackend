@@ -21,14 +21,14 @@ public class PostController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @PostMapping("/Agregar")
+    @PostMapping("/AgregarPost")
     public ResponseEntity<String> agregar(@RequestBody PostDTO postDTO) {
         Post post = modelMapper.map(postDTO, Post.class);
         postService.insertarPost(post);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/Actualizar")
+    @PutMapping("/ActualizarPost")
     public ResponseEntity<String> actualizar(@RequestBody PostDTO postDTO) {
         Post post = modelMapper.map(postDTO, Post.class);
         postService.actualizarPost(post);
