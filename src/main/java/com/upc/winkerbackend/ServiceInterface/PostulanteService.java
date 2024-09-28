@@ -3,6 +3,7 @@ package com.upc.winkerbackend.ServiceInterface;
 import com.upc.winkerbackend.DTO.PostulanteDTO;
 import com.upc.winkerbackend.Entities.Postulante;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PostulanteService {
@@ -16,4 +17,6 @@ public interface PostulanteService {
     List<PostulanteDTO> postulantesConSolicitudesAceptadas();
     Long findPostulanteIdByUsername(String username);
     List<Object[]> countPostsPorPostulante();
+    List<PostulanteDTO> buscarPostulantesPorAnio(Integer anio);
+    List<PostulanteDTO> buscarPostulantePorFechaNacimiento(LocalDate fechaNacimiento);
 }

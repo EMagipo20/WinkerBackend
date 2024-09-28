@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -111,6 +112,18 @@ public class PostulanteController {
         } catch (Exception ex) {
             throw new ErrorException("Error interno al buscar postulantes por correo.");
         }
+    }
+
+    @GetMapping("/BuscarPorFechaNacimiento/{fechaNacimiento}")
+    public ResponseEntity<List<PostulanteDTO>> buscarPorFechaNacimiento(@PathVariable("fechaNacimiento") LocalDate fechaNacimiento){
+        List<PostulanteDTO> postulantes = pS.buscarPostulantePorFechaNacimiento(fechaNacimiento);
+        return ResponseEntity.ok(postulantes);
+    }
+
+    @GetMapping("/BuscarPorAnio/{anio}")
+    public ResponseEntity<List<PostulanteDTO>> buscarPorAnio(@PathVariable("anio") Integer anio){
+        List<PostulanteDTO> postulantes = pS.buscarPostulantesPorAnio(anio);
+        return ResponseEntity.ok(postulantes);
     }
 
     @GetMapping("/SolicitudesAceptadas")
