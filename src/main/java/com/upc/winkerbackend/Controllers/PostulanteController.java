@@ -26,7 +26,7 @@ public class PostulanteController {
 
     private ModelMapper modelMapper;
 
-    @PostMapping("/Agregar")
+    @PostMapping("/AgregarPostulante")
     public ResponseEntity<String> agregar(@RequestBody PostulanteDTO postulanteDTO) {
         pS.insertarPostulante(postulanteDTO);
         return ResponseEntity.ok().build();
