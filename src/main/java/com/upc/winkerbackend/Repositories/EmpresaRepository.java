@@ -8,19 +8,20 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository // Define esta clase como un repositorio para la entidad Empresa
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
-    // BUSCAR A UNA EMPRESA POR RUC
+
+    // Método para buscar empresas por RUC
     List<Empresa> findByRuc(String ruc);
 
-    // BUSCAR A UNA EMPRESA POR NOMBRE
+    // Método para buscar empresas por el nombre
     List<Empresa> findByNombreEmpresa(String nombreEmpresa);
 
-    // FILTRAR TODAS LAS EMPRESAS INSCRITAS
+    // Query personalizada para contar el número total de empresas registradas
     @Query("SELECT COUNT(e) FROM Empresa e")
     long countTotalEmpresas();
 
-    // FILTRAR NOMBRE DE EMPRESA MEDIANTE USERNAME
+    // Query personalizada para obtener el nombre de la empresa basado en el nombre de usuario de su usuario asociado
     @Query("SELECT e.nombreEmpresa FROM Empresa e JOIN e.usuario u WHERE u.username = :username")
     String findNombreEmpresaByUsuarioUsername(@Param("username") String username);
 }
